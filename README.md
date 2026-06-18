@@ -2,6 +2,12 @@
 ## YOLOv8 Benchmarking, Frame-Level Counting, and Streamlit Demo
 
 **Author:** P. O. Adepoju  
+**Project Type:** AI/ML Engineering Portfolio Project  
+**Status:** Active Development
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Framework: YOLOv8](https://img.shields.io/badge/Framework-Ultralytics%20YOLOv8-orange.svg)](https://docs.ultralytics.com/)
 
 ---
 
@@ -34,6 +40,8 @@ The project answers four questions:
 
 The report and code show that the answer depends on the deployment target, but the fastest model is also the most practical one for real-time CPU inference.
 
+For a deeper technical write-up, see [`docs/technical_report_outline.md`](docs/technical_report_outline.md).
+
 ---
 
 ## 2. Data and Models
@@ -45,6 +53,13 @@ The report and code show that the answer depends on the deployment target, but t
 
 The repository uses pretrained COCO weights directly, so it can run zero-shot on common scenes without any custom training step. That makes the project easy to reproduce and easy to extend.
 
+### Data and Models
+
+- Data folder: [Google Drive data folder](https://drive.google.com/drive/folders/1UdiaMlaXKWGhFTgH97xwSIZnEkpGCTXh?usp=sharing)
+- Models folder: [Google Drive models folder](https://drive.google.com/drive/folders/1yPCfyW3mTZNWJnYyqImzV_r0z5vWYIYE?usp=sharing)
+- Local sample video: `data/raw/sample_traffic.mp4`
+- Cached weights: `models/`
+
 ### Model Summary
 
 | Model | Parameters | Mean FPS | Mean Latency | p95 Latency | Peak Memory |
@@ -55,7 +70,49 @@ The repository uses pretrained COCO weights directly, so it can run zero-shot on
 
 ---
 
-## 3. Report Highlights
+## 3. Quick Start
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+If the data or models are not already in the repository, download them from:
+
+- [Data folder](https://drive.google.com/drive/folders/1UdiaMlaXKWGhFTgH97xwSIZnEkpGCTXh?usp=sharing)
+- [Models folder](https://drive.google.com/drive/folders/1yPCfyW3mTZNWJnYyqImzV_r0z5vWYIYE?usp=sharing)
+
+### Run the Full Pipeline
+
+```bash
+python scripts/run_all.py --video data/raw/sample_traffic.mp4 --model yolov8s
+```
+
+### Launch the Dashboard
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+### Recommended Reading Order
+
+```text
+notebooks/
+|-- 01_environment_and_model_setup.ipynb
+|-- 02_dataset_and_coco_exploration.ipynb
+|-- 03_single_frame_detection_and_visualization.ipynb
+|-- 04_video_inference_pipeline.ipynb
+|-- 05_object_counting_logic.ipynb
+|-- 06_model_benchmarking_latency_fps_memory.ipynb
+|-- 07_model_size_comparison_nano_small_medium.ipynb
+|-- 08_results_analysis_and_publication_figures.ipynb
+`-- 09_streamlit_app_walkthrough.ipynb
+```
+
+---
+
+## 4. Report Highlights
 
 ### 3.1 COCO Class Overview
 
@@ -111,7 +168,7 @@ This final summary figure combines speed, model size, and detection richness int
 
 ---
 
-## 4. Quantitative Results
+## 5. Quantitative Results
 
 ### Counting Summary
 
@@ -143,7 +200,7 @@ For CPU deployment, YOLOv8-nano is the best default choice because it offers the
 
 ---
 
-## 5. Methods
+## 6. Methods
 
 The report follows a reproducible pipeline:
 
@@ -186,6 +243,21 @@ python scripts/run_all.py --video data/raw/sample_traffic.mp4 --model yolov8s
 streamlit run app/streamlit_app.py
 ```
 
+If you prefer conda:
+
+```bash
+conda create -n yolo-detection python=3.10
+conda activate yolo-detection
+pip install -r requirements.txt
+```
+
+### Data and Model Assets
+
+- Data folder: [Google Drive folder](https://drive.google.com/drive/folders/1UOM9GHnlEq0sc-vny0Gz6Ed9OZGf-cNR?usp=sharing)
+- Model weights: stored in `models/`
+- Report figures: `reports/figures/`
+- Report tables: `reports/tables/`
+
 ---
 
 ## 7. Project Structure
@@ -209,7 +281,11 @@ realtime-object-detection/
 `-- README.md
 ```
 
-The full technical outline is available in [`docs/technical_report_outline.md`](docs/technical_report_outline.md).
+The full technical outline is available in [`docs/technical_report_outline.md`](C:/Users/Peter/Documents/projects/GITHUB/ALMOST DONE/realtime-object-detection/docs/technical_report_outline.md).
+
+The full write-up and generated artefacts live in `paper/` and `reports/`, respectively.
+
+The report figures and tables are mirrored in both `reports/` and `paper/` so the notebook outputs and the write-up stay in sync.
 
 ---
 
@@ -255,8 +331,32 @@ Representative outputs include:
 - `06_latency_distribution`
 - `07_tradeoff_scatter`
 
+Additional report artefacts include:
+
+- `05_count_summary.csv`
+- `06_benchmark_comparison.csv`
+- `07_final_model_comparison.csv`
+- `paper/figures/`
+- `paper/tables/`
+
 ---
 
-## 11. License
+## 11. Full Report
+
+The full technical write-up is organized as a report-style document with:
+
+- Abstract and introduction
+- Background and theory
+- System design and methods
+- Results and discussion
+- Limitations and future work
+- Ethical considerations
+- Appendix material and references
+
+If you want the exact report structure, use the outline in [`docs/technical_report_outline.md`](docs/technical_report_outline.md).
+
+---
+
+## 12. License
 
 MIT License. See [`LICENSE`](LICENSE).
