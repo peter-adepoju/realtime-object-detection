@@ -1,0 +1,4 @@
+,model_name,weight_file,model_size_mb,n_frames,mean_latency_ms,median_latency_ms,p95_latency_ms,p99_latency_ms,std_latency_ms,min_latency_ms,max_latency_ms,mean_fps,peak_memory_mb,frame_height,frame_width
+0,YOLOv8-nano,c:\Users\Peter\Documents\projects\AI_research\realtime-object-detection\models\yolov8n.pt,,100,104.35,106.99,124.3,145.65,13.8,83.69,152.09,9.58,1.26,480,640
+1,YOLOv8-small,c:\Users\Peter\Documents\projects\AI_research\realtime-object-detection\models\yolov8s.pt,,100,229.06,216.33,275.96,295.15,24.61,200.15,301.95,4.37,4.98,480,640
+2,YOLOv8-medium,c:\Users\Peter\Documents\projects\AI_research\realtime-object-detection\models\yolov8m.pt,,100,831.7,653.25,1388.52,4119.14,625.67,457.12,4912.21,1.2,0.48,480,640

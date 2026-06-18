@@ -1,0 +1,6 @@
+class_name,total_appearances,mean_per_frame,max_in_single_frame,frames_present,pct_frames_present
+car,7776,5.18,9,1501,100.0
+truck,2044,1.36,5,1241,82.7
+person,745,0.5,5,468,31.2
+motorcycle,155,0.1,2,150,10.0
+bus,5,0.0,1,5,0.3

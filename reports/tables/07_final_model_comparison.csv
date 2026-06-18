@@ -1,0 +1,4 @@
+,Model,Params (M),Size (MB),Mean FPS,Mean Lat (ms),p95 Lat (ms),Peak Mem (MB),Mean Dets/Frame,Deployment Scenario
+0,YOLOv8-nano,3.1572,,9.58,104.35,124.3,1.26,7.4,Server / near real-time
+1,YOLOv8-small,11.16656,,4.37,229.06,275.96,4.98,6.95,Batch / offline processing
+2,YOLOv8-medium,25.90264,,1.2,831.7,1388.52,0.48,8.4,Batch / offline processing

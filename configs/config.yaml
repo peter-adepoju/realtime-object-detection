@@ -1,0 +1,52 @@
+# configs/config.yaml
+# Main project configuration for the Real-Time Object Detection project.
+# All notebooks and scripts read settings from here rather than hardcoding them.
+# Edit this file to change thresholds, paths, or model settings project-wide.
+
+# ── Project metadata ──────────────────────────────────────────────────────────
+project:
+  name: "Real-Time Object Detection and Counting"
+  author: "P. O. Adepoju"
+  version: "1.0.0"
+
+# ── Model settings ────────────────────────────────────────────────────────────
+model:
+  # Default variant for notebooks — change to "nano" for faster testing
+  default_variant: "small"          # nano | small | medium | large | xlarge
+  confidence_threshold: 0.25        # Detections below this confidence are discarded
+  iou_threshold: 0.45               # IoU threshold for Non-Maximum Suppression (NMS)
+  # Classes to detect — null means all 80 COCO classes
+  # Example: [0, 2, 5, 7] detects only person, car, bus, truck
+  target_classes: null
+
+# ── Benchmark settings ────────────────────────────────────────────────────────
+benchmark:
+  variants_to_compare:
+    - "nano"
+    - "small"
+    - "medium"
+  n_warmup_frames: 10               # Warm-up frames to discard before timing
+  n_benchmark_frames: 100           # Frames to time (after warm-up)
+  frame_width: 640                  # Resize frames to this width for fair comparison
+  frame_height: 480
+
+# ── Video settings ────────────────────────────────────────────────────────────
+video:
+  # Default sample video for notebooks — placed in data/raw/ after download
+  default_sample: "sample_traffic.mp4"
+  output_fps: 25                    # FPS for output annotated video
+
+# ── Object counting settings ─────────────────────────────────────────────────
+counting:
+  top_n_classes: 5                  # Top N classes shown in count overlay / plots
+
+# ── Figure settings ───────────────────────────────────────────────────────────
+figures:
+  dpi: 300                          # Publication-quality DPI for PNG output
+  style: "seaborn-v0_8-whitegrid"   # matplotlib style
+  palette: "colorblind"             # seaborn palette (colorblind-safe)
+  figsize_default: [10, 6]          # Default figure size (width, height) in inches
+  figsize_wide: [14, 5]             # Wide layout for comparison plots
+
+# ── Reproducibility ───────────────────────────────────────────────────────────
+seed: 42
