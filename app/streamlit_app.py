@@ -114,7 +114,7 @@ with st.sidebar:
         help="Upload a video file to run detection on. Max recommended: 60 seconds.",
     )
 
-   # use_sample = st.checkbox("Use sample video (if available)", value=True)
+   use_sample = st.checkbox("Use sample video (if available)", value=False)
 
     st.markdown("---")
     st.markdown("### ℹ️ About")
