@@ -339,22 +339,6 @@ Additional report artefacts include:
 
 ---
 
-## 11. Full Report
-
-The full technical write-up is organized as a report-style document with:
-
-- Abstract and introduction
-- Background and theory
-- System design and methods
-- Results and discussion
-- Limitations and future work
-- Ethical considerations
-- Appendix material and references
-
-If you want the exact report structure, use the outline in [`docs/technical_report_outline.md`](docs/technical_report_outline.md).
-
----
-
-## 12. License
+## 11. License
 
 MIT License. See [`LICENSE`](LICENSE).
