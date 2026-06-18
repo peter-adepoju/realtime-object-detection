@@ -166,8 +166,7 @@ with tab_detection:
 
     if video_bytes is None and video_path is None:
         st.info(
-            "📁 Upload a video using the sidebar, or enable 'Use sample video' "
-            "after running **Notebook 02** to download a sample."
+            "📁 Upload a video using the sidebar "
         )
         st.stop()
 
