@@ -114,7 +114,7 @@ with st.sidebar:
         help="Upload a video file to run detection on. Max recommended: 60 seconds.",
     )
 
-    use_sample = st.checkbox("Use sample video (if available)", value=True)
+   # use_sample = st.checkbox("Use sample video (if available)", value=True)
 
     st.markdown("---")
     st.markdown("### ℹ️ About")
@@ -166,8 +166,7 @@ with tab_detection:
 
     if video_bytes is None and video_path is None:
         st.info(
-            "📁 Upload a video using the sidebar, or enable 'Use sample video' "
-            "after running **Notebook 02** to download a sample."
+            "📁 Upload a video using the sidebar."
         )
         st.stop()
 
