@@ -2,8 +2,6 @@
 ## YOLOv8 Benchmarking, Frame-Level Counting, and Streamlit Demo
 
 **Author:** P. O. Adepoju  
-**Project Type:** AI/ML Engineering Portfolio Project  
-**Status:** Active Development
 
 ---
 
@@ -61,53 +59,53 @@ The repository uses pretrained COCO weights directly, so it can run zero-shot on
 
 ### 3.1 COCO Class Overview
 
-![COCO class categories](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/02_coco_class_categories.png)
+![COCO class categories](reports/figures/02_coco_class_categories.png)
 
 The COCO taxonomy covers 80 common object categories. In the sample traffic video, the dominant detections are cars, trucks, persons, motorcycles, and buses.
 
 ### 3.2 Single-Frame Detection
 
-![Single-frame detections](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/03_single_frame_detections.png)
+![Single-frame detections](reports/figures/03_single_frame_detections.png)
 
 The report includes a side-by-side comparison of the original frame and the annotated detection output, showing the model’s class predictions and confidence scores on a representative frame.
 
 ### 3.3 Confidence Analysis
 
-![Confidence distribution](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/03_confidence_distribution.png)
+![Confidence distribution](reports/figures/03_confidence_distribution.png)
 
 The confidence analysis shows how predictions are distributed across classes and helps explain why the threshold choice matters for downstream counts.
 
 ### 3.4 Threshold Sensitivity
 
-![Threshold sensitivity](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/03_threshold_sensitivity.png)
+![Threshold sensitivity](reports/figures/03_threshold_sensitivity.png)
 
 Lower confidence thresholds recover more detections, but they also increase the risk of false positives. The report uses this figure to justify the selected operating threshold.
 
 ### 3.5 Frames Per Second Timeline
 
-![FPS timeline](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/04_frames_per_second_timeline.png)
+![FPS timeline](reports/figures/04_frames_per_second_timeline.png)
 
 This figure shows per-frame throughput and latency across the full 1,501-frame video, including the warm-up effect at the start of inference.
 
 ### 3.6 Counting Results
 
-![Count time series](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/05_count_timeseries.png)
+![Count time series](reports/figures/05_count_timeseries.png)
 
-![Count summary bar chart](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/05_count_summary_bar.png)
+![Count summary bar chart](reports/figures/05_count_summary_bar.png)
 
 The count summaries show that cars dominate the scene, followed by trucks and persons. The temporal plot shows how traffic intensity changes over time.
 
 ### 3.7 Benchmark Comparison
 
-![FPS comparison](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/06_fps_comparison.png)
+![FPS comparison](reports/figures/06_fps_comparison.png)
 
-![Latency distribution](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/06_latency_distribution.png)
+![Latency distribution](reports/figures/06_latency_distribution.png)
 
 The benchmarking section makes the trade-off clear: nano is fastest and most stable, small is slower but still usable for offline or batch processing, and medium becomes too slow for CPU-based real-time use.
 
 ### 3.8 Final Trade-Off View
 
-![Trade-off scatter](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/reports/figures/07_tradeoff_scatter.png)
+![Trade-off scatter](reports/figures/07_tradeoff_scatter.png)
 
 This final summary figure combines speed, model size, and detection richness into one deployment view.
 
@@ -211,7 +209,7 @@ realtime-object-detection/
 `-- README.md
 ```
 
-The full technical outline is available in [`docs/technical_report_outline.md`](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/docs/technical_report_outline.md).
+The full technical outline is available in [`docs/technical_report_outline.md`](docs/technical_report_outline.md).
 
 ---
 
@@ -261,4 +259,4 @@ Representative outputs include:
 
 ## 11. License
 
-MIT License. See [`LICENSE`](/C:/Users/Peter/Documents/projects/GITHUB/ALMOST%20DONE/realtime-object-detection/LICENSE).
+MIT License. See [`LICENSE`](LICENSE).
