@@ -34,10 +34,20 @@ SRC_DIR = PROJECT_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from detection_system.loader import load_model, get_coco_classes
-from detection_system.inference import detect_frame
-from detection_system.counting import count_objects
-from detection_system.visualize import draw_detections, bgr_to_rgb
+try:
+    from detection_system.loader import load_model, get_coco_classes
+    from detection_system.inference import detect_frame
+    from detection_system.counting import count_objects
+    from detection_system.visualize import draw_detections, bgr_to_rgb
+    DETECTION_IMPORT_ERROR = None
+except Exception as exc:  # pragma: no cover - only used when startup imports fail
+    load_model = None
+    get_coco_classes = None
+    detect_frame = None
+    count_objects = None
+    draw_detections = None
+    bgr_to_rgb = None
+    DETECTION_IMPORT_ERROR = exc
 
 # ── Page configuration ─────────────────────────────────────────────────────────
 st.set_page_config(
@@ -66,6 +76,11 @@ st.markdown("""
 @st.cache_resource(show_spinner="Loading YOLOv8 weights…")
 def get_model(variant: str):
     """Load and cache a YOLOv8 model. Re-runs only when variant changes."""
+    if load_model is None:
+        raise RuntimeError(
+            "Detection modules could not be imported. "
+            "Check that `src/detection_system/` is present and dependencies are installed."
+        ) from DETECTION_IMPORT_ERROR
     models_dir = PROJECT_ROOT / "models"
     return load_model(variant, models_dir=models_dir)
 
@@ -94,7 +109,7 @@ with st.sidebar:
     )
 
     # Class filter
-    coco_classes = get_coco_classes()
+    coco_classes = get_coco_classes() if get_coco_classes is not None else []
     selected_classes = st.multiselect(
         "Filter Classes (leave empty = all 80 COCO classes)",
         options=coco_classes,
@@ -135,7 +150,6 @@ st.markdown(
 )
 
 # ── Load model ─────────────────────────────────────────────────────────────────
-model = get_model(variant)
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tab_detection, tab_counts, tab_benchmark = st.tabs([
@@ -162,11 +176,20 @@ def get_video_bytes_path():
 # TAB 1 — Detection
 # ═══════════════════════════════════════════════════════════════════════════════
 with tab_detection:
+    if DETECTION_IMPORT_ERROR is not None:
+        st.error(
+            "The detection package could not be imported. "
+            "Please check the repo layout and installed dependencies."
+        )
+        st.exception(DETECTION_IMPORT_ERROR)
+        st.stop()
+
     video_bytes, video_path = get_video_bytes_path()
 
     if video_bytes is None and video_path is None:
         st.info(
-            "📁 Upload a video using the sidebar "
+            "📁 Upload a video using the sidebar, or enable 'Use sample video' "
+            "after running **Notebook 02** to download a sample."
         )
         st.stop()
 
@@ -213,6 +236,16 @@ with tab_detection:
     if not ret:
         st.error(f"Could not read frame {frame_idx} from the video.")
     else:
+        try:
+            model = get_model(variant)
+        except Exception as exc:
+            st.error(
+                "The model could not be loaded. "
+                "This usually means the weights are missing, blocked, or still downloading."
+            )
+            st.exception(exc)
+            st.stop()
+
         t0 = time.perf_counter()
         detections, latency_ms = detect_frame(
             model, frame,
