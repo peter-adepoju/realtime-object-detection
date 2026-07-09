@@ -8,6 +8,8 @@
 [![Framework: YOLOv8](https://img.shields.io/badge/Framework-Ultralytics%20YOLOv8-orange.svg)](https://docs.ultralytics.com/)
 
 ---
+Please check the demo on streamlit: https://realtime-object-detection.streamlit.app
+---
 
 ## Abstract
 
